@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Service Selection</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Select Parking Service</h1>
+        <form id="parkingForm" class="bg-white p-6 rounded w-60 shadow-md">
+            <div class="mb-4">
+                <label for="province" class="block text-gray-700 font-bold mb-2">Province:</label>
+                <select id="province" class="block w-full bg-white border border-gray-300 rounded py-2 px-4">
+                    <option value="">Select Province</option>
+                    <option value="Kigali">Kigali</option>
+                    <option value="Southern">Southern</option>
+                    <option value="Western">Western</option>
+                    <option value="Northern">Northern</option>
+                    <option value="Eastern">Eastern</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="district" class="block text-gray-700 font-bold mb-2">District:</label>
+                <select id="district" class="block w-full bg-white border border-gray-300 rounded pNy-2 px-4" disabled>
+                    <option value="">Select District</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="sector" class="block text-gray-700 font-bold mb-2">Sector:</label>
+                <select id="sector" class="block w-full bg-white border border-gray-300 rounded py-2 px-4" disabled>
+                    <option value="">Select Sector</option>
+                </select>
+            </div>
+            
+            <div class="mb-4">
+                <label for="parkingService" class="block text-gray-700 font-bold mb-2">Parking Service:</label>
+                <select id="parkingService" class="block w-full bg-white border border-gray-300 rounded py-2 px-4"
+                    disabled>
+                    <option value="">Select Parking Service</option>
+                    <option value="Standard Parking">Standard Parking</option>
+                    <option value="VIP Parking">VIP Parking</option>
+                    <option value="Handicapped Parking">Handicapped Parking</option>
+                </select>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const districts = {
+                Kigali: ["Gasabo", "Kicukiro", "Nyarugenge"],
+                Southern: ["Gisagara", "Huye", "Kamonyi", "Muhanga", "Nyamagabe", "Nyanza", "Nyaruguru", "Ruhango"],
+                Western: ["Karongi", "Ngororero", "Nyabihu", "Nyamasheke", "Rubavu", "Rusizi", "Rutsiro"],
+                Northern: ["Burera", "Gakenke", "Gicumbi", "Musanze", "Rulindo"],
+                Eastern: ["Bugesera", "Gatsibo", "Kayonza", "Kirehe", "Ngoma", "Nyagatare", "Rwamagana"]
+            };
+
+            const sectors = {
+                Gasabo: ["Bumbogo", "Gatsata", "Gikomero", "Gisozi", "Jabana", "Jali", "Kacyiru", "Kimihurura", "Kimironko", "Kinyinya", "Ndera", "Nduba", "Remera", "Rusororo", "Rutunga"],
+                Kicukiro: ["Gahanga", "Gatenga", "Gikondo", "Kagarama", "Kanombe", "Kicukiro", "Kigarama", "Masaka", "Niboye", "Nyarugunga"],
+                Nyarugenge: ["Gitega", "Kanyinya", "Kigali", "Kimisagara", "Mageragere", "Muhima", "Nyakabanda", "Nyamirambo", "Nyarugenge", "Rwezamenyo"],
+                Bugesera:["Gashora", "Juru", "Kamabuye", "Mareba", "Mayange", "Musenyi", "Mwogo", "Ngeruka", "Ntarama", "Nyamata", "Nyarugenge", "Ruhuha", "Rurenge", "Rweru", "Shyara"],
+                Gatsibo:["Gasange", "Gatsibo", "Gitoki", "Kabarore", "Kageyo", "Kiramuruzi", "Kiziguro", "Muhura", "Murambi", "Ngarama", "Nyagihanga", "Remera", "Rugarama", "Rwimbogo"],
+                Kayonza:["Gahini", "Kabare", "Kabarondo", "Mukarange", "Murama", "Murundi", "Mwiri", "Ndego", "Nyamirama", "Rukara", "Ruramira", "Rwinkwavu"],
+                Kirehe:["Gahara", "Gatore", "Kigarama", "Kirehe", "Mahama", "Mpanga", "Musaza", "Mushikiri", "Nasho", "Nyamugari", "Nyamugali", "Nyarubuye"],
+                Ngoma:["Gashanda", "Jarama", "Karembo", "Kazo", "Kibungo", "Mugesera", "Murama", "Mutenderi", "Remera", "Rukira", "Rukumberi", "Sake", "Zaza"],
+                Nyagatare:["Gatunda", "Karama", "Karangazi", "Katabagemu", "Kiyombe", "Matimba", "Mimuri", "Musheli", "Nyagatare", "Rukomo", "Rwempasha", "Rwimiyaga", "Tabagwe"],
+                Rwamagana:["Fumbwe", "Gahengeri", "Gishari", "Karenge", "Kigabiro", "Muhazi", "Munyaga", "Munyiginya", "Musha", "Mwulire", "Nyakariro", "Nzige", "Rubona"],
+            }
+
+            
+
+            const provinceSelect = document.getElementById('province');
+            const districtSelect = document.getElementById('district');
+            const sectorSelect = document.getElementById('sector');
+            
+            const parkingServiceSelect = document.getElementById('parkingService');
+            provinceSelect.addEventListener('change', function () {
+                const province = this.value;
+                districtSelect.innerHTML = '<option value="">Select District</option>';
+                sectorSelect.innerHTML = '<option value="">Select Sector</option>';
+                
+                districtSelect.disabled = true;
+                sectorSelect.disabled = true;
+                
+                parkingServiceSelect.disabled = true;
+
+                if (province) {
+                    districts[province].forEach(district => {
+                        const option = document.createElement('option');
+                        option.value = district;
+                        option.textContent = district;
+                        districtSelect.appendChild(option);
+                    });
+                    districtSelect.disabled = false;
+                }
+            });
+            districtSelect.addEventListener('change', function () {
+                const district = this.value;
+                sectorSelect.innerHTML = '<option value="">Select Sector</option>';
+                
+                sectorSelect.disabled = true;
+                
+                parkingServiceSelect.disabled = true;
+
+                if (district) {
+                    sectors[district].forEach(sector => {
+                        const option = document.createElement('option');
+                        option.value = sector;
+                        option.textContent = sector;
+                        sectorSelect.appendChild(option);
+                    });
+                    sectorSelect.disabled = false;
+                }
+            });
+            sectorSelect.addEventListener('change', function () {
+                const sector = this.value;
+                cellSelect.innerHTML = '<option value="">Select Cell</option>';
+                cellSelect.disabled = true;
+                parkingServiceSelect.disabled = true;
+
+                if (sector) {
+                    cells[sector].forEach(cell => {
+                        const option = document.createElement('option');
+                        option.value = cell;
+                        option.textContent = cell;
+                        cellSelect.appendChild(option);
+                    });
+                    cellSelect.disabled = false;
+                }
+            });
+            
+           
+        });
+    </script>
+</body>
+
+</html>
