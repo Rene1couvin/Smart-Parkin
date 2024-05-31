@@ -21,7 +21,7 @@
 
 
     <header class="bg-white w-full fixed shadow-md">
-        <div class="container mx-auto py-4 px-6 lg:flex justify-between items-center">
+        <div class="container mx-auto  px-6 lg:flex justify-between items-center">
 
             <h1 class="text-lg font-semibold text-gray-800">Smart Parking</h1>
 
@@ -34,8 +34,11 @@
                 </ul>
             </nav>
             <div>
-                <button id="toggleFormBtn" onclick="toggleForm()"> <img src="{% static 'images/DSC_9360~2.jpg' %}"
-                        class="h-8 w-8 rounded-full" alt=""></button>
+                <button class="pt-2" id="toggleFormBtn" onclick="toggleForm()"> <img src="{% static 'images/DSC_9360~2.jpg' %}"
+                        class="h-8 w-8 rounded-full" alt="">
+                    <p>{{ user.username }}</p>
+                </button>
+
             </div>
         </div>
     </header>
@@ -49,9 +52,9 @@
     </div>
 
     <section class="bg-blue-500 text-white py-24 px-6"
-        style="background-image: url('https://d2hucwwplm5rxi.cloudfront.net/wp-content/uploads/2022/10/27072334/How-to-Prepare-Your-Car-for-Long-term-Parking-_-Cover-21-10-22.jpg'); background-size: cover; height:auto;">
+        style="background-image: url('https://d2hucwwplm5rxi.cloudfront.net/wp-content/uploads/2022/10/27072334/How-to-Prepare-Your-Car-for-Long-term-Parking-_-Cover-21-10-22.jpg'); background-size: cover; height:38rem;">
         <div class="container mx-auto">
-            <h2 class="text-8xl text-white font-semibold mb-4">Effortless Parking Solutions</h2>
+            <h2 class="text-8xl text-white font-semibold pt-24 mb-4">Effortless Parking Solutions</h2>
             <p class="text-xl text-white mb-8">Find, reserve, and pay for parking hassle-free with our smart parking
                 system.</p>
             <a href="reserve"
@@ -60,10 +63,10 @@
         </div>
     </section>
 
-    <section class="py-16 px-6">
+    <section class="py-16 px-24">
         <div class="container mx-auto">
             <h2 class="text-3xl font-semibold mb-8 text-center">Why Choose Smart Parking?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-8">
                 <div class="bg-white rounded-lg p-6 shadow-md benefit">
                     <h3 class="text-xl font-semibold mb-4">Convenience</h3>
                     <p class="text-gray-700">Easily find available parking spots near your destination.</p>
@@ -161,14 +164,16 @@
                             <img src="{% static 'images/DSC_9360~2.jpg' %}" class="w-24 h-24 mb-4 rounded-full">
                             <h4 class="text-lg font-semibold mb-2">BANA RUSIZANA Rene Francis</h4>
                             <p class="text-gray-700">Co-Founder & CEO</p>
-                        </div>                
+                        </div>
                         <div class="bg-white rounded-lg p-6 shadow-md">
-                            <img src="{% static 'images/DSC_9360~2.jpg' %}" alt="Team Member 2" class="w-24 h-24 mb-4 rounded-full">
+                            <img src="{% static 'images/DSC_9360~2.jpg' %}" alt="Team Member 2"
+                                class="w-24 h-24 mb-4 rounded-full">
                             <h4 class="text-lg font-semibold mb-2">IRADUKUNDA Prince</h4>
                             <p class="text-gray-700">Co-Founder & CTO</p>
                         </div>
                         <div class="bg-white rounded-lg p-6 shadow-md">
-                            <img src="{% static 'images/1A1A4557~2.jpg' %}" alt="Team Member 3" class="w-24 h-24 mb-4 rounded-full">
+                            <img src="{% static 'images/1A1A4557~2.jpg' %}" alt="Team Member 3"
+                                class="w-24 h-24 mb-4 rounded-full">
                             <h4 class="text-lg font-semibold mb-2">BWIZA Blandine</h4>
                             <p class="text-gray-700">Head of Operations</p>
                         </div>
@@ -181,115 +186,111 @@
 
 
     <!--services-->
-    <div id="our_services" class="bg-gray-100">
+    <div id="our_services">
+        <div class="bg-gray-200"></div>
         <section class="py-16 px-6">
             <div class="container mx-auto">
                 <h2 class="text-3xl font-semibold mb-8 text-center">Our Services</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                    <div class="bg-white rounded-lg p-6 shadow-md benefit">
-                        <h3 class="text-xl font-semibold mb-4">Parking Spot Reservation</h3>
-                        <p class="text-gray-700">Allow users to reserve parking spots in advance, ensuring availability
-                            when they arrive at their destination.</p>
+                <div class="grid grid-cols-1 px-24 md:grid-cols-2 gap-24">
+                    <div class="benefit">
+                        <h3 class="text-xl font-semibold mb-4">Parking Reservation System</h3>
+                        <p class="text-gray-700">Reserve a parking spot in advance through our user-friendly mobile app
+                            or website.</p>
                     </div>
-                    <div class="bg-white rounded-lg p-6 shadow-md benefit">
-                        <h3 class="text-xl font-semibold mb-4">Valet Parking</h3>
-                        <p class="text-gray-700">Offer valet parking services where users can drop off their vehicles at
-                            designated locations and have them parked by attendants.</p>
+                    <div class="benefit">
+                        <h3 class="text-xl font-semibold mb-4">Real-time Availability</h3>
+                        <p class="text-gray-700">Get real-time updates on parking availability at your destination.</p>
                     </div>
-
-                    <div class="bg-white rounded-lg p-6 shadow-md benefit">
-                        <h3 class="text-xl font-semibold mb-4">Mobile App Integration</h3>
-                        <p class="text-gray-700">Provide a mobile app for users to easily find, reserve, and pay for
-                            parking spots using their smartphones.</p>
+                    <div class="benefit">
+                        <h3 class="text-xl font-semibold mb-4">Secure Payment</h3>
+                        <p class="text-gray-700">Pay securely through our platform and enjoy a seamless parking
+                            experience.</p>
                     </div>
-
+                    <div class="benefit">
+                        <h3 class="text-xl font-semibold mb-4">Customer Support</h3>
+                        <p class="text-gray-700">Our dedicated support team is available 24/7 to assist you with any
+                            issues or questions.</p>
+                    </div>
                 </div>
             </div>
         </section>
-
     </div>
-
-
-
     <!-- contact us -->
 
     <section id="contact_us">
-        <body class="bg-gray-100">
-            <header class="bg-white shadow-md">
-                <div class="container mx-auto py-4 px-6 flex justify-between items-center">
-                    <h1 class="text-lg font-semibold text-gray-800">Contact Us</h1>
-                    <!-- <nav>
-                    <ul class="flex space-x-4">
-                        <li><a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-800">Home</a></li>
-                        <li><a href="{% url 'about' %}" class="text-gray-600 hover:text-gray-800">About</a></li>
-                        <li><a href="{% url 'service' %}" class="text-gray-600 hover:text-gray-800">Services</a></li>
-                        <li><a href="" class="text-gray-600 hover:text-gray-800">Contact</a></li>
-                    </ul>
-                </nav> -->
-                </div>
-                </heade>
 
-                <main class="container mx-auto px-4 py-8">
-                    <section class="mb-8 ">
-                        <h2 class="text-2xl font-bold mb-4">Contact Information</h2>
-                        <div class="flex flex-wrap items-center ">
-                            <div class="w-full md:w-1/2 mb-4 md:mb-0">
-                                <h3 class="text-lg font-semibold">Email</h3>
-                                <p>info@example.com</p>
-                            </div>
-                            <div class="w-full md:w-1/2 mb-4 md:mb-0">
-                                <h3 class="text-lg font-semibold">Phone</h3>
-                                <p>+1 234 567 890</p>
+        <body class="bg-blue-400">
+            <main class="container mx-auto px-4 py-4  ">
+                <div id="contact_us">
+                    <div class="bg-blue-400"></div>
+                    <section class="py-16 px-6">
+                        <div class="container mx-auto">
+                            <h2 class="text-3xl font-semibold mb-8 text-center">Contact Us</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="benefit">
+                                    <h3 class="text-xl font-semibold mb-4">Get in Touch</h3>
+                                    <p class="text-gray-700">Have questions or feedback? Reach out to us using the form
+                                        below or
+                                        through our contact details.</p>
+                                </div>
+                                <div>
+                                    <form action="#" method="POST" class="bg-white rounded-lg p-6 shadow-md">
+                                        <div class="mb-4">
+                                            <label for="name"
+                                                class="block text-gray-700 font-semibold mb-2">Name</label>
+                                            <input type="text" id="name" name="name"
+                                                class="w-full border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-500">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="email"
+                                                class="block text-gray-700 font-semibold mb-2">Email</label>
+                                            <input type="email" id="email" name="email"
+                                                class="w-full border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-500">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="message"
+                                                class="block text-gray-700 font-semibold mb-2">Message</label>
+                                            <textarea id="message" name="message"
+                                                class="w-full border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-500"></textarea>
+                                        </div>
+                                        <button type="submit"
+                                            class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Send
+                                            Message</button>
+                                        <button type="reset"
+                                            class="bg-red-400 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                            Cancel</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </section>
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">Contact Form</h2>
-                        <form>
-                            <div class="mb-4">
-                                <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
-                                <input type="text" id="name" name="name"
-                                    class="border border-gray-300 px-4 py-2 w-full rounded-md focus:outline-none focus:border-blue-500">
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-                                <input type="email" id="email" name="email"
-                                    class="border border-gray-300 px-4 py-2 w-full rounded-md focus:outline-none focus:border-blue-500">
-                            </div>
-                            <div class="mb-4">
-                                <label for="message" class="block text-gray-700 font-bold mb-2">Message</label>
-                                <textarea id="message" name="message"
-                                    class="border border-gray-300 px-4 h-64 py-2 w-full rounded-md focus:outline-none focus:border-blue-500"></textarea>
-                            </div>
-                            <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Send
-                                Message</button>
-                            <button type="reset"
-                                class="bg-red-400 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                                Cancel</button>
-                        </form>
-                    </section>
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">Our Location</h2>
-                        <iframe width="100%" height="400" frameborder="0" style="border:0;"
-                            src="https://www.google.com/maps/place/KN+308+St,+Kigali/@-1.9857888,30.0386835,17z/data=!3m1!4b1!4m6!3m5!1s0x19dca58d0d5f11dd:0xdda9dcd622f95c24!8m2!3d-1.9857888!4d30.0412584!16s%2Fg%2F12xqy_7l6?entry=ttu"
-                            allowfullscreen>
-                        </iframe>
-                    </section>
-                    <section>
-                        <h2 class="text-2xl font-bold mb-4">Additional Information</h2>
-                        <p>Our office hours are Monday to Friday, 8:30 AM - 5:00 PM.</p>
+                </div>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Our Location</h2>
+                    <iframe width="100%" height="400" frameborder="0" style="border:0;"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15950.120679370404!2d30.0885032!3d-1.9405468!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6261e51cfaaa7f7d!2sMinistry%20of%20Agriculture%20and%20Animal%20Resources!5e0!3m2!1sen!2srw!4v1574848083116!5m2!1sen!2srw"
+                        allowfullscreen>
+                    </iframe>
+                </section>
+                <section>
+                    <h2 class="text-2xl font-bold mb-4">Additional Information</h2>
+                    <p>Our office hours are Monday to Friday, 8:30 AM - 5:00 PM.</p>
 
-                    </section>
-                </main>
+                </section>
+            </main>
     </section>
+
+
+
+
+
 
 
     <footer class="bg-gray-800 text-white py-8 px-6">
         <div class="container mx-auto text-center">
             <p>&copy; 2024 Smart Parking. All rights reserved.</p>
         </div>
+
     </footer>
 
     <script>
@@ -302,11 +303,11 @@
                 item.classList.remove('transform', 'scale-105', 'transition', 'duration-300', 'ease-in-out');
             });
         });
-        
+
         function toggleForm() {
             var form = document.getElementById("abcde");
             form.style.display = (form.style.display == "none") ? "block" : "none";
-            
+
         }
 
     </script>
